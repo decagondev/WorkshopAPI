@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+}
+
+group = 'com.decadev'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb
+	implementation 'com.amazonaws:aws-java-sdk-dynamodb:1.12.264'
+
+	// https://mvnrepository.com/artifact/com.github.derjust/spring-data-dynamodb
+	implementation 'com.github.derjust:spring-data-dynamodb:5.1.0'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
